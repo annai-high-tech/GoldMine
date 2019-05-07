@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
 
-    def appName = "GoldMine"
+    def appName = "JewelMine"
 
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.aht.entertainment.goldmine"
+        applicationId "com.aht.shopping.jewelmine"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1

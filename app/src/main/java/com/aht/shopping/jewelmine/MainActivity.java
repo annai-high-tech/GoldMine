@@ -1,4 +1,4 @@
-package com.aht.entertainment.goldmine;
+package com.aht.shopping.jewelmine;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
