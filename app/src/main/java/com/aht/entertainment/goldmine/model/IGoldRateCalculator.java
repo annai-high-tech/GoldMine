@@ -1,16 +1,15 @@
 package com.aht.entertainment.goldmine.model;
 
 import com.aht.entertainment.goldmine.data.GoldData;
-import com.aht.entertainment.goldmine.data.IGoldData;
 
 public interface IGoldRateCalculator {
 
-    IGoldData updatePriceList(GoldData data);
+    boolean updatePriceList(GoldData data);
 
-    IGoldData updateNoGstPriceList(GoldData data);
+    boolean updateNoGstPriceList(GoldData data);
 
-    IGoldData updatePriceQuotationList(GoldData data);
+    boolean updatePriceQuotationList(GoldData data);
 
-    IGoldData updateNoGstPriceQuotationList(GoldData data);
+    boolean updateNoGstPriceQuotationList(GoldData data);
 
 }

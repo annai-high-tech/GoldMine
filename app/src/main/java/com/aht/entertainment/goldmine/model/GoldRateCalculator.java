@@ -1,21 +1,20 @@
 package com.aht.entertainment.goldmine.model;
 
 import com.aht.entertainment.goldmine.data.GoldData;
-import com.aht.entertainment.goldmine.data.IGoldData;
 
 public class GoldRateCalculator  extends RateCalculator implements IGoldRateCalculator {
 
     @Override
-    public IGoldData updatePriceList(GoldData data) {
+    public boolean updatePriceList(GoldData data) {
         return updatePriceList(data, true);
     }
 
     @Override
-    public IGoldData updateNoGstPriceList(GoldData data) {
+    public boolean updateNoGstPriceList(GoldData data) {
         return updatePriceList(data, false);
     }
 
-    private IGoldData updatePriceList(GoldData data, boolean isGstRequired) {
+    private boolean updatePriceList(GoldData data, boolean isGstRequired) {
         double cost;
         boolean status = true;
 
@@ -46,21 +45,21 @@ public class GoldRateCalculator  extends RateCalculator implements IGoldRateCalc
             data.setTotalCost(cost);
         }
 
-        return data;
+        return data.isTotalCostValid();
 
     }
 
     @Override
-    public IGoldData updatePriceQuotationList(GoldData data) {
+    public boolean updatePriceQuotationList(GoldData data) {
         return updateNoGstPriceQuotationList(data, true);
     }
 
     @Override
-    public IGoldData updateNoGstPriceQuotationList(GoldData data) {
+    public boolean updateNoGstPriceQuotationList(GoldData data) {
         return updateNoGstPriceQuotationList(data, false);
     }
 
-    private IGoldData updateNoGstPriceQuotationList(GoldData data, boolean isGstRequired) {
+    private boolean updateNoGstPriceQuotationList(GoldData data, boolean isGstRequired) {
         double cost;
         boolean status;
 
@@ -97,7 +96,7 @@ public class GoldRateCalculator  extends RateCalculator implements IGoldRateCalc
             }
         }
 
-        return data;
+        return data.isWastagePercentageValid();
 
     }
 

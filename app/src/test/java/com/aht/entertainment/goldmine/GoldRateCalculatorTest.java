@@ -1,7 +1,6 @@
 package com.aht.entertainment.goldmine;
 
 import com.aht.entertainment.goldmine.data.GoldData;
-import com.aht.entertainment.goldmine.data.IGoldData;
 import com.aht.entertainment.goldmine.model.GoldRateCalculator;
 import com.aht.entertainment.goldmine.model.IGoldRateCalculator;
 import com.aht.entertainment.goldmine.model.RateCalculator;
@@ -30,11 +29,11 @@ public class GoldRateCalculatorTest {
     public void updatePriceList_1() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f, 0.0f);
         output = calculator.updatePriceList(input);
-        assertFalse(output.isTotalCostValid());
+        assertFalse(output);
 
     }
 
@@ -42,12 +41,12 @@ public class GoldRateCalculatorTest {
     public void updatePriceList_2() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f, 0.0f);
         output = calculator.updatePriceList(input);
-        assertTrue(output.isTotalCostValid());
-        assertEquals(0.0, output.getTotalCost(), EPSILON);
+        assertTrue(output);
+        assertEquals(0.0, input.getTotalCost(), EPSILON);
 
     }
 
@@ -55,11 +54,11 @@ public class GoldRateCalculatorTest {
     public void updateNoGstPriceList_1() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f);
         output = calculator.updatePriceList(input);
-        assertFalse(output.isTotalCostValid());
+        assertFalse(output);
 
     }
 
@@ -67,12 +66,12 @@ public class GoldRateCalculatorTest {
     public void updateNoGstPriceList_2() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f);
         output = calculator.updatePriceList(input);
-        assertTrue(output.isTotalCostValid());
-        assertEquals(0.0, output.getTotalCost(), EPSILON);
+        assertTrue(output);
+        assertEquals(0.0, input.getTotalCost(), EPSILON);
 
     }
 
@@ -80,12 +79,12 @@ public class GoldRateCalculatorTest {
     public void updatePriceQuotationList_1() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f, 0.0f);
 
         output = calculator.updatePriceQuotationList(input);
-        assertFalse(output.isWastagePercentageValid());
+        assertFalse(output);
 
     }
 
@@ -93,13 +92,13 @@ public class GoldRateCalculatorTest {
     public void updatePriceQuotationList_2() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f, 0.0f);
 
         output = calculator.updatePriceQuotationList(input);
-        assertTrue(output.isWastagePercentageValid());
-        assertEquals(0.0, output.getWastagePercentage(), EPSILON);
+        assertTrue(output);
+        assertEquals(0.0, input.getWastagePercentage(), EPSILON);
 
     }
 
@@ -107,11 +106,11 @@ public class GoldRateCalculatorTest {
     public void updateNoGstPriceQuotationList_1() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f, 0.0f);
         output = calculator.updatePriceQuotationList(input);
-        assertFalse(output.isWastagePercentageValid());
+        assertFalse(output);
 
     }
 
@@ -119,12 +118,12 @@ public class GoldRateCalculatorTest {
     public void updateNoGstPriceQuotationList_2() {
 
         GoldData input;
-        IGoldData output;
+        boolean output;
 
         input = new GoldData(0.0f, 0.0f);
         output = calculator.updatePriceQuotationList(input);
-        assertTrue(output.isWastagePercentageValid());
-        assertEquals(0.0, output.getWastagePercentage(), EPSILON);
+        assertTrue(output);
+        assertEquals(0.0, input.getWastagePercentage(), EPSILON);
 
     }
 

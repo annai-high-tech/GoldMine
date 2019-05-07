@@ -1,6 +1,6 @@
 package com.aht.entertainment.goldmine.data;
 
-public class GoldData implements IGoldData {
+public class GoldData {
 
     private float rate;
 
@@ -52,7 +52,6 @@ public class GoldData implements IGoldData {
         this.quantity = quantity;
     }
 
-    @Override
     public float getWastagePercentage() {
         return wastagePercentage;
     }
@@ -77,7 +76,6 @@ public class GoldData implements IGoldData {
         this.gst = gst;
     }
 
-    @Override
     public double getTotalCost() {
         return totalCost;
     }
@@ -86,12 +84,10 @@ public class GoldData implements IGoldData {
         this.totalCost = totalCost;
     }
 
-    @Override
     public boolean isTotalCostValid() {
         return !Double.isInfinite(this.totalCost);
     }
 
-    @Override
     public boolean isWastagePercentageValid() {
         return wastagePercentage >= 0.0f;
     }
