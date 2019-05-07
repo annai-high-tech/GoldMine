@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    def appName = "GoldMine"
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.aht.entertainment.goldmine"
@@ -9,6 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        setProperty("archivesBaseName", "$appName-$versionName")
     }
     buildTypes {
         release {
