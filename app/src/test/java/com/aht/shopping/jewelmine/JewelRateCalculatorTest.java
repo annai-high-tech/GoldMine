@@ -1,9 +1,8 @@
-package com.aht.entertainment.goldmine;
+package com.aht.shopping.jewelmine;
 
-import com.aht.entertainment.goldmine.data.GoldData;
-import com.aht.entertainment.goldmine.model.GoldRateCalculator;
-import com.aht.entertainment.goldmine.model.IGoldRateCalculator;
-import com.aht.entertainment.goldmine.model.RateCalculator;
+import com.aht.shopping.jewelmine.data.JewelData;
+import com.aht.shopping.jewelmine.model.jewel.IJewelRateCalculator;
+import com.aht.shopping.jewelmine.model.jewel.JewelRateCalculator;
 
 import org.junit.Test;
 
@@ -17,9 +16,9 @@ import static org.junit.Assert.assertTrue;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 
-public class GoldRateCalculatorTest {
+public class JewelRateCalculatorTest {
 
-    private IGoldRateCalculator calculator = new GoldRateCalculator();
+    private IJewelRateCalculator calculator = new JewelRateCalculator();
 
     private static final double EPSILON = 0.01;
 
@@ -28,10 +27,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updatePriceList_1() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f, 0.0f);
+        input = new JewelData(0.0f, 0.0f);
         output = calculator.updatePriceList(input);
         assertFalse(output);
 
@@ -40,10 +39,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updatePriceList_2() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f, 0.0f);
+        input = new JewelData(0.0f, 0.0f);
         output = calculator.updatePriceList(input);
         assertTrue(output);
         assertEquals(0.0, input.getTotalCost(), EPSILON);
@@ -53,10 +52,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updateNoGstPriceList_1() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f);
+        input = new JewelData(0.0f);
         output = calculator.updatePriceList(input);
         assertFalse(output);
 
@@ -65,10 +64,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updateNoGstPriceList_2() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f);
+        input = new JewelData(0.0f);
         output = calculator.updatePriceList(input);
         assertTrue(output);
         assertEquals(0.0, input.getTotalCost(), EPSILON);
@@ -78,10 +77,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updatePriceQuotationList_1() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f, 0.0f);
+        input = new JewelData(0.0f, 0.0f);
 
         output = calculator.updatePriceQuotationList(input);
         assertFalse(output);
@@ -91,10 +90,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updatePriceQuotationList_2() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f, 0.0f);
+        input = new JewelData(0.0f, 0.0f);
 
         output = calculator.updatePriceQuotationList(input);
         assertTrue(output);
@@ -105,10 +104,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updateNoGstPriceQuotationList_1() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f, 0.0f);
+        input = new JewelData(0.0f, 0.0f);
         output = calculator.updatePriceQuotationList(input);
         assertFalse(output);
 
@@ -117,10 +116,10 @@ public class GoldRateCalculatorTest {
     @Test
     public void updateNoGstPriceQuotationList_2() {
 
-        GoldData input;
+        JewelData input;
         boolean output;
 
-        input = new GoldData(0.0f, 0.0f);
+        input = new JewelData(0.0f, 0.0f);
         output = calculator.updatePriceQuotationList(input);
         assertTrue(output);
         assertEquals(0.0, input.getWastagePercentage(), EPSILON);

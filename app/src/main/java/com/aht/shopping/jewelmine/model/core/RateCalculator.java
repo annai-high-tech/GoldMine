@@ -1,4 +1,4 @@
-package com.aht.entertainment.goldmine.model;
+package com.aht.shopping.jewelmine.model.core;
 
 public abstract class RateCalculator {
 

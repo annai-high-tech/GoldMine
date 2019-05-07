@@ -1,10 +1,11 @@
-package com.aht.entertainment.goldmine;
+package com.aht.shopping.jewelmine;
 
-import com.aht.entertainment.goldmine.model.RateCalculator;
+import com.aht.shopping.jewelmine.model.core.RateCalculator;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

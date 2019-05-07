@@ -1,20 +1,21 @@
-package com.aht.entertainment.goldmine.model;
+package com.aht.shopping.jewelmine.model.jewel;
 
-import com.aht.entertainment.goldmine.data.GoldData;
+import com.aht.shopping.jewelmine.data.JewelData;
+import com.aht.shopping.jewelmine.model.core.RateCalculator;
 
-public class GoldRateCalculator  extends RateCalculator implements IGoldRateCalculator {
+public class JewelRateCalculator extends RateCalculator implements IJewelRateCalculator {
 
     @Override
-    public boolean updatePriceList(GoldData data) {
+    public boolean updatePriceList(JewelData data) {
         return updatePriceList(data, true);
     }
 
     @Override
-    public boolean updateNoGstPriceList(GoldData data) {
+    public boolean updateNoGstPriceList(JewelData data) {
         return updatePriceList(data, false);
     }
 
-    private boolean updatePriceList(GoldData data, boolean isGstRequired) {
+    private boolean updatePriceList(JewelData data, boolean isGstRequired) {
         double cost;
         boolean status = true;
 
@@ -50,16 +51,16 @@ public class GoldRateCalculator  extends RateCalculator implements IGoldRateCalc
     }
 
     @Override
-    public boolean updatePriceQuotationList(GoldData data) {
+    public boolean updatePriceQuotationList(JewelData data) {
         return updateNoGstPriceQuotationList(data, true);
     }
 
     @Override
-    public boolean updateNoGstPriceQuotationList(GoldData data) {
+    public boolean updateNoGstPriceQuotationList(JewelData data) {
         return updateNoGstPriceQuotationList(data, false);
     }
 
-    private boolean updateNoGstPriceQuotationList(GoldData data, boolean isGstRequired) {
+    private boolean updateNoGstPriceQuotationList(JewelData data, boolean isGstRequired) {
         double cost;
         boolean status;
 
