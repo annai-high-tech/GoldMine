@@ -1,10 +1,10 @@
 package com.aht.entertainment.goldmine.data;
 
-public class GoldData {
+public class GoldData implements IGoldData {
 
-    private double rate;
+    private float rate;
 
-    private double quantity;
+    private float quantity;
 
     private float wastagePercentage;
 
@@ -14,8 +14,8 @@ public class GoldData {
 
     private double totalCost;
 
-    private GoldData(double rate,
-                     double quantity,
+    private GoldData(float rate,
+                     float quantity,
                      float wastagePercentage,
                      float makingCharge,
                      float gst,
@@ -28,30 +28,31 @@ public class GoldData {
         this.totalCost = totalCost;
     }
 
-    public GoldData(double rate, float gst) {
-        this(rate, 0.0, 0.0f, 0.0f, gst, 0);
+    public GoldData(float rate, float gst) {
+        this(rate, 0.0f, 0.0f, 0.0f, gst, 0);
     }
 
-    public GoldData(double rate) {
-        this(rate, 0.0, 0.0f, 0.0f, 0.0f, 0);
+    public GoldData(float rate) {
+        this(rate, 0.0f, 0.0f, 0.0f, 0.0f, 0);
     }
 
-    public double getRate() {
+    public float getRate() {
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(float rate) {
         this.rate = rate;
     }
 
-    public double getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 
+    @Override
     public float getWastagePercentage() {
         return wastagePercentage;
     }
@@ -76,11 +77,22 @@ public class GoldData {
         this.gst = gst;
     }
 
+    @Override
     public double getTotalCost() {
         return totalCost;
     }
 
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
+    }
+
+    @Override
+    public boolean isTotalCostValid() {
+        return !Double.isInfinite(this.totalCost);
+    }
+
+    @Override
+    public boolean isWastagePercentageValid() {
+        return wastagePercentage >= 0.0f;
     }
 }

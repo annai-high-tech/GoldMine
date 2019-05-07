@@ -1,41 +1,22 @@
 package com.aht.entertainment.goldmine.model;
 
-public class RateCalculator {
+public abstract class RateCalculator {
 
-    public RateCalculator() {
+    protected RateCalculator() {
 
     }
 
-    public long getCost(int rate, int quantity, int extraTax) {
+    protected double getCost(float rate, float quantity, float extraTax) {
+
+        if(rate < 0.0f || quantity < 0.0f || extraTax < 0.0f) {
+            return Double.POSITIVE_INFINITY;
+        }
+
         return ((rate * quantity) * (100 + extraTax)) / 100;
     }
 
-    public long getCost(long rate, long quantity, int extraTax) {
-        return ((rate * quantity) * (100 + extraTax)) / 100;
-    }
-
-    public double getCost(float rate, float quantity, float extraTax) {
-        return ((rate * quantity) * (100 + extraTax)) / 100;
-    }
-
-    public double getCost(double rate, double quantity, float extraTax) {
-        return ((rate * quantity) * (100 + extraTax)) / 100;
-    }
-
-
-    public long getCost(int rate, int quantity) {
-        return getCost(rate, quantity, 0);
-    }
-
-    public long getCost(long rate, long quantity) {
-        return getCost(rate, quantity, 0);
-    }
-
-    public double getCost(float rate, float quantity) {
+    protected double getCost(float rate, float quantity) {
         return getCost(rate, quantity, 0.0f);
     }
 
-    public double getCost(double rate, double quantity) {
-        return getCost(rate, quantity, 0.0f);
-    }
 }

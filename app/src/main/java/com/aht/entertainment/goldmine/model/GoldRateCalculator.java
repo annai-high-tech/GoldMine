@@ -1,58 +1,81 @@
 package com.aht.entertainment.goldmine.model;
 
 import com.aht.entertainment.goldmine.data.GoldData;
+import com.aht.entertainment.goldmine.data.IGoldData;
 
-public class GoldRateCalculator implements IGoldRateCalculator {
-
-    private RateCalculator calculator = new RateCalculator();
+public class GoldRateCalculator  extends RateCalculator implements IGoldRateCalculator {
 
     @Override
-    public boolean updatePriceList(GoldData data) {
+    public IGoldData updatePriceList(GoldData data) {
         return updatePriceList(data, true);
     }
 
     @Override
-    public boolean updateNoGstPriceList(GoldData data) {
+    public IGoldData updateNoGstPriceList(GoldData data) {
         return updatePriceList(data, false);
     }
 
-    private boolean updatePriceList(GoldData data, boolean isGstRequired) {
+    private IGoldData updatePriceList(GoldData data, boolean isGstRequired) {
         double cost;
         boolean status = true;
 
-        //TODO for checking input data
+        //checking input data
+        if (data.getRate() < 0.0
+                || data.getQuantity() < 0.0
+                || data.getWastagePercentage() < 0.0
+                || data.getMakingCharge() < 0.0) {
+
+            data.setTotalCost(Double.POSITIVE_INFINITY);
+            status = false;
+        }
+
+        if (isGstRequired && data.getGst() <= 0.0) {
+            data.setTotalCost(Double.POSITIVE_INFINITY);
+            status = false;
+        }
 
         if (status) {
-            cost = calculator.getCost(data.getRate(), data.getQuantity(), data.getWastagePercentage());
+            cost = super.getCost(data.getRate(), data.getQuantity(), data.getWastagePercentage());
 
             cost += data.getMakingCharge();
 
             if (isGstRequired) {
-                cost += calculator.getCost(cost, 1.0, data.getGst());
+                cost += super.getCost((float)cost, 1.0f, data.getGst());
             }
 
             data.setTotalCost(cost);
         }
 
-        return status;
+        return data;
 
     }
 
     @Override
-    public boolean updatePriceQuotationList(GoldData data) {
+    public IGoldData updatePriceQuotationList(GoldData data) {
         return updateNoGstPriceQuotationList(data, true);
     }
 
     @Override
-    public boolean updateNoGstPriceQuotationList(GoldData data) {
+    public IGoldData updateNoGstPriceQuotationList(GoldData data) {
         return updateNoGstPriceQuotationList(data, false);
     }
 
-    private boolean updateNoGstPriceQuotationList(GoldData data, boolean isGstRequired) {
+    private IGoldData updateNoGstPriceQuotationList(GoldData data, boolean isGstRequired) {
         double cost;
-        boolean status = true;
+        boolean status;
 
-        //TODO for checking input data
+        //checking input data
+        status = data.isTotalCostValid();
+
+        if (!status
+                || data.getRate() < 0.0
+                || data.getQuantity() < 0.0
+                || data.getTotalCost() < 0.0
+                || data.getMakingCharge() < 0.0) {
+
+            data.setWastagePercentage(-0.0f);
+            status = false;
+        }
 
         if (status) {
             cost = data.getTotalCost();
@@ -67,10 +90,14 @@ public class GoldRateCalculator implements IGoldRateCalculator {
 
             cost = (cost * 100) - 100;
 
-            data.setWastagePercentage((float)cost);
+            if (Double.isInfinite(cost)) {
+                data.setWastagePercentage(-0.01f);
+            } else {
+                data.setWastagePercentage((float) cost);
+            }
         }
 
-        return status;
+        return data;
 
     }
 
