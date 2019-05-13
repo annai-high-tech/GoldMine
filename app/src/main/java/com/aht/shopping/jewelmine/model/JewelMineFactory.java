@@ -9,9 +9,9 @@ import com.aht.shopping.jewelmine.model.silver.SilverRateCalculator;
 
 public class JewelMineFactory {
 
-    private IJewelRateCalculator jewelRateCalculator[] = new IJewelRateCalculator[JewelType.getCount()];
+    private static IJewelRateCalculator jewelRateCalculator[] = new IJewelRateCalculator[JewelType.getCount()];
 
-    private JewelMineFactory() {
+    static {
 
         jewelRateCalculator[JewelType.getValue(JewelType.SILVER)] = new SilverRateCalculator();
         jewelRateCalculator[JewelType.getValue(JewelType.GOLD)] = new GoldRateCalculator();
@@ -20,7 +20,7 @@ public class JewelMineFactory {
 
     }
 
-    public IJewelRateCalculator getInstance(JewelType type) {
+    public static IJewelRateCalculator getInstance(JewelType type) {
 
         IJewelRateCalculator instance = null;
 
@@ -41,7 +41,7 @@ public class JewelMineFactory {
         return instance;
     }
 
-    public IJewelRateCalculator getNewInstance(JewelType type) {
+    public static IJewelRateCalculator getNewInstance(JewelType type) {
 
         IJewelRateCalculator instance = null;
 

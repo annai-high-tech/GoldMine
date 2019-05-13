@@ -36,6 +36,10 @@ public class JewelData {
         this(rate, 0.0f, 0.0f, 0.0f, 0.0f, 0);
     }
 
+    public JewelData() {
+        this(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0);
+    }
+
     public float getRate() {
         return rate;
     }

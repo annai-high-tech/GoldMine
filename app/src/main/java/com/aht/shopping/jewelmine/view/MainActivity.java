@@ -1,4 +1,4 @@
-package com.aht.shopping.jewelmine;
+package com.aht.shopping.jewelmine.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,13 +14,32 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.aht.shopping.jewelmine.R;
+import com.aht.shopping.jewelmine.controller.ActivityButtonListener;
+import com.aht.shopping.jewelmine.controller.ActivityTextListener;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ActivityButtonListener buttonListener = null;
+    private ActivityTextListener textListener = null;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+		
+		buttonListener = new ActivityButtonListener(this);
+        textListener = new ActivityTextListener(this);
+
+        findViewById(R.id.submit_button).setOnClickListener(buttonListener);
+        findViewById(R.id.reset_button).setOnClickListener(buttonListener);
+        findViewById(R.id.rate).setOnTouchListener(textListener);
+        findViewById(R.id.quantity).setOnTouchListener(textListener);
+        findViewById(R.id.wastage).setOnTouchListener(textListener);
+        findViewById(R.id.making).setOnTouchListener(textListener);
+        findViewById(R.id.gst).setOnTouchListener(textListener);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -31,6 +50,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+		
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
