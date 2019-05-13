@@ -40,7 +40,7 @@ public class JewelRateCalculator extends RateCalculator implements IJewelRateCal
             cost += data.getMakingCharge();
 
             if (isGstRequired) {
-                cost += super.getCost((float)cost, 1.0f, data.getGst());
+                cost = super.getCost((float)cost, 1.0f, data.getGst());
             }
 
             data.setTotalCost(cost);
@@ -52,15 +52,15 @@ public class JewelRateCalculator extends RateCalculator implements IJewelRateCal
 
     @Override
     public boolean updatePriceQuotationList(JewelData data) {
-        return updateNoGstPriceQuotationList(data, true);
+        return updatePriceQuotationList(data, true);
     }
 
     @Override
     public boolean updateNoGstPriceQuotationList(JewelData data) {
-        return updateNoGstPriceQuotationList(data, false);
+        return updatePriceQuotationList(data, false);
     }
 
-    private boolean updateNoGstPriceQuotationList(JewelData data, boolean isGstRequired) {
+    private boolean updatePriceQuotationList(JewelData data, boolean isGstRequired) {
         double cost;
         boolean status;
 
@@ -82,6 +82,7 @@ public class JewelRateCalculator extends RateCalculator implements IJewelRateCal
 
             if (isGstRequired) {
                 cost /= (100 + data.getGst());
+                cost *= 100;
             }
 
             cost -= data.getMakingCharge();

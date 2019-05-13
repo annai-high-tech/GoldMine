@@ -42,10 +42,14 @@ public class JewelRateCalculatorTest {
         JewelData input;
         boolean output;
 
-        input = new JewelData(0.0f, 0.0f);
+        input = new JewelData(3045.0f, 18.5f);
+        input.setQuantity(15.940f);
+        input.setWastagePercentage(16.2f);
+        input.setMakingCharge(350.0f);
+
         output = calculator.updatePriceList(input);
         assertTrue(output);
-        assertEquals(0.0, input.getTotalCost(), EPSILON);
+        assertEquals(67249.15, input.getTotalCost(), EPSILON);
 
     }
 
@@ -67,10 +71,14 @@ public class JewelRateCalculatorTest {
         JewelData input;
         boolean output;
 
-        input = new JewelData(0.0f);
-        output = calculator.updatePriceList(input);
+        input = new JewelData(3045.0f);
+        input.setQuantity(15.940f);
+        input.setWastagePercentage(16.2f);
+        input.setMakingCharge(350.0f);
+
+        output = calculator.updateNoGstPriceList(input);
         assertTrue(output);
-        assertEquals(0.0, input.getTotalCost(), EPSILON);
+        assertEquals(56750.34, input.getTotalCost(), EPSILON);
 
     }
 
@@ -93,11 +101,14 @@ public class JewelRateCalculatorTest {
         JewelData input;
         boolean output;
 
-        input = new JewelData(0.0f, 0.0f);
+        input = new JewelData(3045.0f, 18.5f);
+        input.setQuantity(15.940f);
+        input.setTotalCost(67249.15f);
+        input.setMakingCharge(350.0f);
 
         output = calculator.updatePriceQuotationList(input);
         assertTrue(output);
-        assertEquals(0.0, input.getWastagePercentage(), EPSILON);
+        assertEquals(16.2, input.getWastagePercentage(), EPSILON);
 
     }
 
@@ -119,10 +130,14 @@ public class JewelRateCalculatorTest {
         JewelData input;
         boolean output;
 
-        input = new JewelData(0.0f, 0.0f);
-        output = calculator.updatePriceQuotationList(input);
+        input = new JewelData(3045.0f);
+        input.setQuantity(15.940f);
+        input.setTotalCost(56750.34f);
+        input.setMakingCharge(350.0f);
+
+        output = calculator.updateNoGstPriceQuotationList(input);
         assertTrue(output);
-        assertEquals(0.0, input.getWastagePercentage(), EPSILON);
+        assertEquals(16.2, input.getWastagePercentage(), EPSILON);
 
     }
 
