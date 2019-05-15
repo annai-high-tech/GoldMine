@@ -1,15 +1,15 @@
 package com.aht.shopping.jewelmine.model.jewel;
 
-import com.aht.shopping.jewelmine.data.JewelData;
+import com.aht.shopping.jewelmine.data.OneJewelData;
 
 public interface IJewelRateCalculator {
 
-    boolean updatePriceList(JewelData data);
+    boolean updatePriceList(OneJewelData data);
 
-    boolean updateNoGstPriceList(JewelData data);
+    boolean updateNoGstPriceList(OneJewelData data);
 
-    boolean updatePriceQuotationList(JewelData data);
+    boolean updatePriceQuotationList(OneJewelData data);
 
-    boolean updateNoGstPriceQuotationList(JewelData data);
+    boolean updateNoGstPriceQuotationList(OneJewelData data);
 
 }

@@ -1,6 +1,6 @@
 package com.aht.shopping.jewelmine;
 
-import com.aht.shopping.jewelmine.data.JewelData;
+import com.aht.shopping.jewelmine.data.OneJewelData;
 import com.aht.shopping.jewelmine.model.jewel.IJewelRateCalculator;
 import com.aht.shopping.jewelmine.model.jewel.JewelRateCalculator;
 
@@ -27,22 +27,23 @@ public class JewelRateCalculatorTest {
     @Test
     public void updatePriceList_1() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(0.0f, 0.0f);
+        input = new OneJewelData(0.0f, 0.0f);
         output = calculator.updatePriceList(input);
-        assertFalse(output);
+        assertTrue(output);
+        assertEquals(0, input.getTotalCost(), EPSILON);
 
     }
 
     @Test
     public void updatePriceList_2() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(3045.0f, 18.5f);
+        input = new OneJewelData(3045.0f, 18.5f);
         input.setQuantity(15.940f);
         input.setWastagePercentage(16.2f);
         input.setMakingCharge(350.0f);
@@ -56,22 +57,23 @@ public class JewelRateCalculatorTest {
     @Test
     public void updateNoGstPriceList_1() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(0.0f);
+        input = new OneJewelData(0.0f);
         output = calculator.updatePriceList(input);
-        assertFalse(output);
+        assertTrue(output);
+        assertEquals(0, input.getTotalCost(), EPSILON);
 
     }
 
     @Test
     public void updateNoGstPriceList_2() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(3045.0f);
+        input = new OneJewelData(3045.0f);
         input.setQuantity(15.940f);
         input.setWastagePercentage(16.2f);
         input.setMakingCharge(350.0f);
@@ -85,10 +87,10 @@ public class JewelRateCalculatorTest {
     @Test
     public void updatePriceQuotationList_1() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(0.0f, 0.0f);
+        input = new OneJewelData(0.0f, 0.0f);
 
         output = calculator.updatePriceQuotationList(input);
         assertFalse(output);
@@ -98,10 +100,10 @@ public class JewelRateCalculatorTest {
     @Test
     public void updatePriceQuotationList_2() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(3045.0f, 18.5f);
+        input = new OneJewelData(3045.0f, 18.5f);
         input.setQuantity(15.940f);
         input.setTotalCost(67249.15f);
         input.setMakingCharge(350.0f);
@@ -115,10 +117,10 @@ public class JewelRateCalculatorTest {
     @Test
     public void updateNoGstPriceQuotationList_1() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(0.0f, 0.0f);
+        input = new OneJewelData(0.0f, 0.0f);
         output = calculator.updatePriceQuotationList(input);
         assertFalse(output);
 
@@ -127,10 +129,10 @@ public class JewelRateCalculatorTest {
     @Test
     public void updateNoGstPriceQuotationList_2() {
 
-        JewelData input;
+        OneJewelData input;
         boolean output;
 
-        input = new JewelData(3045.0f);
+        input = new OneJewelData(3045.0f);
         input.setQuantity(15.940f);
         input.setTotalCost(56750.34f);
         input.setMakingCharge(350.0f);

@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.aht.shopping.jewelmine.R;
-import com.aht.shopping.jewelmine.data.JewelData;
+import com.aht.shopping.jewelmine.data.OneJewelData;
 import com.aht.shopping.jewelmine.data.enums.JewelType;
 import com.aht.shopping.jewelmine.model.JewelMineFactory;
 import com.aht.shopping.jewelmine.model.jewel.IJewelRateCalculator;
@@ -44,7 +44,7 @@ public class ActivityButtonListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        JewelData data = new JewelData();
+        OneJewelData data = new OneJewelData();
         boolean status;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 

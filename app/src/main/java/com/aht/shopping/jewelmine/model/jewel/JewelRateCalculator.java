@@ -1,21 +1,21 @@
 package com.aht.shopping.jewelmine.model.jewel;
 
-import com.aht.shopping.jewelmine.data.JewelData;
+import com.aht.shopping.jewelmine.data.OneJewelData;
 import com.aht.shopping.jewelmine.model.core.RateCalculator;
 
 public class JewelRateCalculator extends RateCalculator implements IJewelRateCalculator {
 
     @Override
-    public boolean updatePriceList(JewelData data) {
+    public boolean updatePriceList(OneJewelData data) {
         return updatePriceList(data, true);
     }
 
     @Override
-    public boolean updateNoGstPriceList(JewelData data) {
+    public boolean updateNoGstPriceList(OneJewelData data) {
         return updatePriceList(data, false);
     }
 
-    private boolean updatePriceList(JewelData data, boolean isGstRequired) {
+    private boolean updatePriceList(OneJewelData data, boolean isGstRequired) {
         double cost;
         boolean status = true;
 
@@ -29,7 +29,7 @@ public class JewelRateCalculator extends RateCalculator implements IJewelRateCal
             status = false;
         }
 
-        if (isGstRequired && data.getGst() <= 0.0) {
+        if (isGstRequired && data.getGst() < 0.0) {
             data.setTotalCost(Double.POSITIVE_INFINITY);
             status = false;
         }
@@ -37,9 +37,11 @@ public class JewelRateCalculator extends RateCalculator implements IJewelRateCal
         if (status) {
             cost = super.getCost(data.getRate(), data.getQuantity(), data.getWastagePercentage());
 
-            cost += data.getMakingCharge();
+            if(cost > 0) {
+                cost += data.getMakingCharge();
+            }
 
-            if (isGstRequired) {
+            if (isGstRequired  && data.getGst() > 0.0) {
                 cost = super.getCost((float)cost, 1.0f, data.getGst());
             }
 
@@ -51,16 +53,16 @@ public class JewelRateCalculator extends RateCalculator implements IJewelRateCal
     }
 
     @Override
-    public boolean updatePriceQuotationList(JewelData data) {
+    public boolean updatePriceQuotationList(OneJewelData data) {
         return updatePriceQuotationList(data, true);
     }
 
     @Override
-    public boolean updateNoGstPriceQuotationList(JewelData data) {
+    public boolean updateNoGstPriceQuotationList(OneJewelData data) {
         return updatePriceQuotationList(data, false);
     }
 
-    private boolean updatePriceQuotationList(JewelData data, boolean isGstRequired) {
+    private boolean updatePriceQuotationList(OneJewelData data, boolean isGstRequired) {
         double cost;
         boolean status;
 

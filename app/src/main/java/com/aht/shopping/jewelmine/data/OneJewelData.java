@@ -1,6 +1,6 @@
 package com.aht.shopping.jewelmine.data;
 
-public class JewelData {
+public class OneJewelData {
 
     private float rate;
 
@@ -14,12 +14,12 @@ public class JewelData {
 
     private double totalCost;
 
-    private JewelData(float rate,
-                      float quantity,
-                      float wastagePercentage,
-                      float makingCharge,
-                      float gst,
-                      double totalCost) {
+    private OneJewelData(float rate,
+                         float quantity,
+                         float wastagePercentage,
+                         float makingCharge,
+                         float gst,
+                         double totalCost) {
         this.rate = rate;
         this.quantity = quantity;
         this.wastagePercentage = wastagePercentage;
@@ -28,15 +28,15 @@ public class JewelData {
         this.totalCost = totalCost;
     }
 
-    public JewelData(float rate, float gst) {
+    public OneJewelData(float rate, float gst) {
         this(rate, 0.0f, 0.0f, 0.0f, gst, 0);
     }
 
-    public JewelData(float rate) {
+    public OneJewelData(float rate) {
         this(rate, 0.0f, 0.0f, 0.0f, 0.0f, 0);
     }
 
-    public JewelData() {
+    public OneJewelData() {
         this(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0);
     }
 
