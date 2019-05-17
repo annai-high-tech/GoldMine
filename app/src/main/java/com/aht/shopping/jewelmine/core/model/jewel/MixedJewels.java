@@ -1,6 +1,6 @@
 package com.aht.shopping.jewelmine.core.model.jewel;
 
-import com.aht.shopping.jewelmine.core.model.data.Jewel;
+import com.aht.shopping.jewelmine.core.model.data.GstJewel;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,11 +12,9 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class NormalJewels  implements Map<Integer, Jewel>{
+public class MixedJewels implements Map<Integer, GstJewel>{
 
-    private Map<Integer, Jewel> jewelList = new HashMap<Integer, Jewel>();
-
-    private float gst;
+    private Map<Integer, GstJewel> jewelList = new HashMap<Integer, GstJewel>();
 
     @Override
     public int size() {
@@ -39,22 +37,22 @@ public class NormalJewels  implements Map<Integer, Jewel>{
     }
 
     @Override
-    public Jewel get(Object o) {
+    public GstJewel get(Object o) {
         return jewelList.get(o);
     }
 
     @Override
-    public Jewel put(Integer integer, Jewel gstJewel) {
+    public GstJewel put(Integer integer, GstJewel gstJewel) {
         return jewelList.put(integer, gstJewel);
     }
 
     @Override
-    public Jewel remove(Object o) {
+    public GstJewel remove(Object o) {
         return jewelList.remove(o);
     }
 
     @Override
-    public void putAll(Map<? extends Integer, ? extends Jewel> map) {
+    public void putAll(Map<? extends Integer, ? extends GstJewel> map) {
         jewelList.putAll(map);
     }
 
@@ -69,32 +67,32 @@ public class NormalJewels  implements Map<Integer, Jewel>{
     }
 
     @Override
-    public Collection<Jewel> values() {
+    public Collection<GstJewel> values() {
         return jewelList.values();
     }
 
     @Override
-    public Set<Map.Entry<Integer, Jewel>> entrySet() {
+    public Set<Map.Entry<Integer, GstJewel>> entrySet() {
         return jewelList.entrySet();
     }
 
     @Override
-    public Jewel getOrDefault(Object o, Jewel gstJewel) {
+    public GstJewel getOrDefault(Object o, GstJewel gstJewel) {
         return jewelList.getOrDefault(o, gstJewel);
     }
 
     @Override
-    public void forEach(BiConsumer<? super Integer, ? super Jewel> biConsumer) {
+    public void forEach(BiConsumer<? super Integer, ? super GstJewel> biConsumer) {
         jewelList.forEach(biConsumer);
     }
 
     @Override
-    public void replaceAll(BiFunction<? super Integer, ? super Jewel, ? extends Jewel> biFunction) {
+    public void replaceAll(BiFunction<? super Integer, ? super GstJewel, ? extends GstJewel> biFunction) {
         jewelList.replaceAll(biFunction);
     }
 
     @Override
-    public Jewel putIfAbsent(Integer integer, Jewel gstJewel) {
+    public GstJewel putIfAbsent(Integer integer, GstJewel gstJewel) {
         return jewelList.putIfAbsent(integer, gstJewel);
     }
 
@@ -104,46 +102,32 @@ public class NormalJewels  implements Map<Integer, Jewel>{
     }
 
     @Override
-    public boolean replace(Integer integer, Jewel gstJewel, Jewel v1) {
+    public boolean replace(Integer integer, GstJewel gstJewel, GstJewel v1) {
         return jewelList.replace(integer, gstJewel, v1);
     }
 
     @Override
-    public Jewel replace(Integer integer, Jewel gstJewel) {
+    public GstJewel replace(Integer integer, GstJewel gstJewel) {
         return jewelList.replace(integer, gstJewel);
     }
 
     @Override
-    public Jewel computeIfAbsent(Integer integer, Function<? super Integer, ? extends Jewel> function) {
+    public GstJewel computeIfAbsent(Integer integer, Function<? super Integer, ? extends GstJewel> function) {
         return jewelList.computeIfAbsent(integer, function);
     }
 
     @Override
-    public Jewel computeIfPresent(Integer integer, BiFunction<? super Integer, ? super Jewel, ? extends Jewel> biFunction) {
+    public GstJewel computeIfPresent(Integer integer, BiFunction<? super Integer, ? super GstJewel, ? extends GstJewel> biFunction) {
         return jewelList.computeIfPresent(integer, biFunction);
     }
 
     @Override
-    public Jewel compute(Integer integer, BiFunction<? super Integer, ? super Jewel, ? extends Jewel> biFunction) {
+    public GstJewel compute(Integer integer, BiFunction<? super Integer, ? super GstJewel, ? extends GstJewel> biFunction) {
         return jewelList.compute(integer, biFunction);
     }
 
     @Override
-    public Jewel merge(Integer integer, Jewel gstJewel, BiFunction<? super Jewel, ? super Jewel, ? extends Jewel> biFunction) {
+    public GstJewel merge(Integer integer, GstJewel gstJewel, BiFunction<? super GstJewel, ? super GstJewel, ? extends GstJewel> biFunction) {
         return jewelList.merge(integer, gstJewel, biFunction);
-    }
-
-    public float getGst() {
-        return gst;
-    }
-
-    public void setGst(float gst) {
-        this.gst = gst;
-    }
-
-    public void createJewel(float rate, float quantity, float wastage, float makingCharges, boolean isSelected) {
-
-        Jewel data = new Jewel(rate, quantity, wastage, makingCharges, isSelected);
-        put(1, data);
     }
 }

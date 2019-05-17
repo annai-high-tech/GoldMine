@@ -8,10 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.aht.shopping.jewelmine.R;
-import com.aht.shopping.jewelmine.data.OneJewelData;
-import com.aht.shopping.jewelmine.data.enums.JewelType;
-import com.aht.shopping.jewelmine.model.JewelMineFactory;
-import com.aht.shopping.jewelmine.model.jewel.IJewelRateCalculator;
+import com.aht.shopping.jewelmine.core.model.interfaces.JewelMineFactory;
+import com.aht.shopping.jewelmine.core.model.jewel.NormalJewels;
+import com.aht.shopping.jewelmine.core.model.interfaces.IJewelCostCalculator;
 
 import java.text.DecimalFormat;
 
@@ -27,7 +26,7 @@ public class ActivityButtonListener implements View.OnClickListener {
     private Button submitBtn;
     private TextView total;
 
-    private IJewelRateCalculator rateCalculator = JewelMineFactory.getInstance(JewelType.GOLD);
+    private IJewelCostCalculator rateCalculator = JewelMineFactory.createCostCalculator();
 
     public ActivityButtonListener(AppCompatActivity activity) {
 
@@ -44,24 +43,30 @@ public class ActivityButtonListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        OneJewelData data = new OneJewelData();
+        NormalJewels data = JewelMineFactory.createNormalJewels();
         boolean status;
+        double cost;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
         if(v.getId() == R.id.submit_button) {
-            data.setRate(Float.parseFloat(rateTxt.getText().toString()));
-            data.setQuantity(Float.parseFloat(quantityTxt.getText().toString()));
-            data.setWastagePercentage(Float.parseFloat(wastageTxt.getText().toString()));
-            data.setMakingCharge(Float.parseFloat(makingTxt.getText().toString()));
+
+            data.createJewel(
+                    Float.parseFloat(rateTxt.getText().toString()),
+                    Float.parseFloat(quantityTxt.getText().toString()),
+                    Float.parseFloat(wastageTxt.getText().toString()),
+                    Float.parseFloat(makingTxt.getText().toString()),
+                    true);
+
             data.setGst(Float.parseFloat(gstTxt.getText().toString()));
 
-            status = rateCalculator.updatePriceList(data);
+            cost = rateCalculator.getTotalCost(data);
+            status = Double.isInfinite(cost);
 
             System.out.println("Status: " + status);
 
             if (status) {
-                System.out.println("Total: " + decimalFormat.format(data.getTotalCost()));
-                total.setText(decimalFormat.format(data.getTotalCost()));
+                System.out.println("Total: " + decimalFormat.format(cost));
+                total.setText(decimalFormat.format(cost));
             }
             else {
                 total.setText("");

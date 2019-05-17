@@ -1,6 +1,6 @@
 package com.aht.shopping.jewelmine;
 
-import com.aht.shopping.jewelmine.model.core.RateCalculator;
+import com.aht.shopping.jewelmine.core.model.core.RateCalculator;
 
 import org.junit.Test;
 

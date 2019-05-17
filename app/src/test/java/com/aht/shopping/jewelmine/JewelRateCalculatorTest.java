@@ -1,8 +1,7 @@
 package com.aht.shopping.jewelmine;
 
-import com.aht.shopping.jewelmine.data.OneJewelData;
-import com.aht.shopping.jewelmine.model.jewel.IJewelRateCalculator;
-import com.aht.shopping.jewelmine.model.jewel.JewelRateCalculator;
+import com.aht.shopping.jewelmine.core.model.jewel.IJewelRateCalculator;
+import com.aht.shopping.jewelmine.core.model.jewel.JewelRateCalculator;
 
 import org.junit.Test;
 
