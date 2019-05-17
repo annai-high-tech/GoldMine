@@ -18,6 +18,8 @@ public class NormalJewels  implements Map<Integer, Jewel>{
 
     private float gst;
 
+    private Integer key = 0;
+
     @Override
     public int size() {
         return jewelList.size();
@@ -61,6 +63,7 @@ public class NormalJewels  implements Map<Integer, Jewel>{
     @Override
     public void clear() {
         jewelList.clear();
+        key = 0;
     }
 
     @Override
@@ -78,61 +81,6 @@ public class NormalJewels  implements Map<Integer, Jewel>{
         return jewelList.entrySet();
     }
 
-    @Override
-    public Jewel getOrDefault(Object o, Jewel gstJewel) {
-        return jewelList.getOrDefault(o, gstJewel);
-    }
-
-    @Override
-    public void forEach(BiConsumer<? super Integer, ? super Jewel> biConsumer) {
-        jewelList.forEach(biConsumer);
-    }
-
-    @Override
-    public void replaceAll(BiFunction<? super Integer, ? super Jewel, ? extends Jewel> biFunction) {
-        jewelList.replaceAll(biFunction);
-    }
-
-    @Override
-    public Jewel putIfAbsent(Integer integer, Jewel gstJewel) {
-        return jewelList.putIfAbsent(integer, gstJewel);
-    }
-
-    @Override
-    public boolean remove(Object o, Object o1) {
-        return jewelList.remove(o, o1);
-    }
-
-    @Override
-    public boolean replace(Integer integer, Jewel gstJewel, Jewel v1) {
-        return jewelList.replace(integer, gstJewel, v1);
-    }
-
-    @Override
-    public Jewel replace(Integer integer, Jewel gstJewel) {
-        return jewelList.replace(integer, gstJewel);
-    }
-
-    @Override
-    public Jewel computeIfAbsent(Integer integer, Function<? super Integer, ? extends Jewel> function) {
-        return jewelList.computeIfAbsent(integer, function);
-    }
-
-    @Override
-    public Jewel computeIfPresent(Integer integer, BiFunction<? super Integer, ? super Jewel, ? extends Jewel> biFunction) {
-        return jewelList.computeIfPresent(integer, biFunction);
-    }
-
-    @Override
-    public Jewel compute(Integer integer, BiFunction<? super Integer, ? super Jewel, ? extends Jewel> biFunction) {
-        return jewelList.compute(integer, biFunction);
-    }
-
-    @Override
-    public Jewel merge(Integer integer, Jewel gstJewel, BiFunction<? super Jewel, ? super Jewel, ? extends Jewel> biFunction) {
-        return jewelList.merge(integer, gstJewel, biFunction);
-    }
-
     public float getGst() {
         return gst;
     }
@@ -143,7 +91,9 @@ public class NormalJewels  implements Map<Integer, Jewel>{
 
     public void createJewel(float rate, float quantity, float wastage, float makingCharges, boolean isSelected) {
 
+        key++;
+
         Jewel data = new Jewel(rate, quantity, wastage, makingCharges, isSelected);
-        put(1, data);
+        put(key, data);
     }
 }

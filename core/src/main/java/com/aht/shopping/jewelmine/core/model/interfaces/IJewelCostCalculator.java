@@ -1,15 +1,16 @@
 package com.aht.shopping.jewelmine.core.model.interfaces;
 
+import com.aht.shopping.jewelmine.core.model.data.Data;
 import com.aht.shopping.jewelmine.core.model.jewel.AccurateMixedJewels;
 import com.aht.shopping.jewelmine.core.model.jewel.MixedJewels;
 import com.aht.shopping.jewelmine.core.model.jewel.NormalJewels;
 
 public interface IJewelCostCalculator {
 
-    public double getTotalCost(NormalJewels jewels);
+    Data getTotalCost(NormalJewels jewels);
 
-    public double getTotalCost(MixedJewels jewels);
+    Data getTotalCost(MixedJewels jewels);
 
-    public double getTotalCost(AccurateMixedJewels jewels);
+    Data getTotalCost(AccurateMixedJewels jewels);
 
 }

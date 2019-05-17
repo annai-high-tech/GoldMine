@@ -8,6 +8,10 @@ public class AccurateGstJewel extends Jewel {
 
     private float customsDuty;
 
+    protected AccurateGstJewel() {
+        this(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
+    }
+
     public AccurateGstJewel(float rate, float quantity, float wastage, float makingCharges, float jewelGst, float makingChargeGst, float customsDuty, boolean selected) {
         super(rate, quantity, wastage, makingCharges, selected);
         this.jewelGst = jewelGst;

@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="Gold Rate" />
+                android:text="@string/main_rate" />
 
             <EditText
                 android:id="@+id/rate"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="Quantity" />
+                android:text="@string/main_quantity" />
 
             <EditText
                 android:id="@+id/quantity"
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="Wastage" />
+                android:text="@string/main_wastage" />
 
             <EditText
                 android:id="@+id/wastage"
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="Making Charge" />
+                android:text="@string/main_making" />
 
             <EditText
                 android:id="@+id/making"
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="GST" />
+                android:text="@string/main_gst" />
 
             <EditText
                 android:id="@+id/gst"
@@ -140,7 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Submit"
+                    android:text="@string/main_submit"
                     android:textSize="20sp"
                     android:textStyle="bold">
 
@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Reset"
+                    android:text="@string/main_reset"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -177,7 +177,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:paddingTop="12sp"
                 android:paddingBottom="12sp"
-                android:text="Total"
+                android:text="@string/main_total"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

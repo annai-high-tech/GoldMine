@@ -12,6 +12,10 @@ public class Jewel {
 
     private float makingCharges;
 
+    protected Jewel() {
+        this(0.0f, 0.0f, 0.0f, 0.0f, false);
+    }
+
     public Jewel(float rate, float quantity, float wastage, float makingCharges, boolean selected) {
         this.rate = rate;
         this.quantity = quantity;

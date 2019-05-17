@@ -13,4 +13,16 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string name="main_rate">Rate (\u20B9)</string>
+    <string name="main_quantity">Quantity (gm)</string>
+    <string name="main_wastage">Wastage (%)</string>
+    <string name="main_making">Making Charge (\u20B9)</string>
+    <string name="main_gst">GST (%)</string>
+    <string name="main_total">Total (\u20B9)</string>
+    <string name="main_submit">Calculate</string>
+    <string name="main_reset">Reset</string>
+
+    <string name="main_errMsg">Invalid Inputs</string>
+
 </resources>

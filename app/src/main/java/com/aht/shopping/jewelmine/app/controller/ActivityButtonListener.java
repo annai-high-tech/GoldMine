@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.aht.shopping.jewelmine.app.R;
+import com.aht.shopping.jewelmine.core.model.data.Data;
 import com.aht.shopping.jewelmine.core.model.interfaces.JewelMineFactory;
 import com.aht.shopping.jewelmine.core.model.jewel.NormalJewels;
 import com.aht.shopping.jewelmine.core.model.interfaces.IJewelCostCalculator;
@@ -45,7 +46,7 @@ public class ActivityButtonListener implements View.OnClickListener {
 
         NormalJewels data = JewelMineFactory.createNormalJewels();
         boolean status = false;
-        double cost = 0.0;
+        Data cost = null;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
         errMsg.setText("");
@@ -62,18 +63,18 @@ public class ActivityButtonListener implements View.OnClickListener {
                 data.setGst(Float.parseFloat(gstTxt.getText().toString()));
 
                 cost = rateCalculator.getTotalCost(data);
-                status = !Double.isInfinite(cost);
+                status = cost.isValid();
             }
             else {
-                System.out.println("Invalid Inputs");
-                errMsg.setText("Invalid Inputs");
+                System.out.println(R.string.main_errMsg);
+                errMsg.setText(R.string.main_errMsg);
             }
 
             System.out.println("Status: " + status);
 
             if (status) {
-                System.out.println("Total: " + decimalFormat.format(cost));
-                total.setText(decimalFormat.format(cost));
+                System.out.println("Total: " + decimalFormat.format(cost.getData()));
+                total.setText(decimalFormat.format(cost.getData()));
             }
             else {
                 total.setText("");
