@@ -45,13 +45,13 @@ public class JewelCostCalculator extends CostCalculator implements IJewelCostCal
         double cost = 0.0;
         boolean status = true;
 
-        //TODO
+        status = jewel.isSelected();
 
         //checking input data
-        if (jewel.getRate() < 0.0
+        if (status && (jewel.getRate() < 0.0
                 || jewel.getQuantity() < 0.0
                 || jewel.getWastage() < 0.0
-                || jewel.getMakingCharges() < 0.0) {
+                || jewel.getMakingCharges() < 0.0)) {
 
             cost = Double.POSITIVE_INFINITY;
             status = false;

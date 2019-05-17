@@ -23,8 +23,8 @@ public class ActivityButtonListener implements View.OnClickListener {
     private EditText wastageTxt;
     private EditText makingTxt;
     private EditText gstTxt;
-    private Button submitBtn;
     private TextView total;
+    private TextView errMsg;
 
     private IJewelCostCalculator rateCalculator = JewelMineFactory.createCostCalculator();
 
@@ -37,6 +37,7 @@ public class ActivityButtonListener implements View.OnClickListener {
         makingTxt = activity.findViewById(R.id.making);
         gstTxt = activity.findViewById(R.id.gst);
         total = activity.findViewById(R.id.total);
+        errMsg = activity.findViewById(R.id.errorMsg);
 
     }
 
@@ -44,23 +45,30 @@ public class ActivityButtonListener implements View.OnClickListener {
     public void onClick(View v) {
 
         NormalJewels data = JewelMineFactory.createNormalJewels();
-        boolean status;
-        double cost;
+        boolean status = false;
+        double cost = 0.0;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
+        errMsg.setText("");
         if(v.getId() == R.id.submit_button) {
 
-            data.createJewel(
-                    Float.parseFloat(rateTxt.getText().toString()),
-                    Float.parseFloat(quantityTxt.getText().toString()),
-                    Float.parseFloat(wastageTxt.getText().toString()),
-                    Float.parseFloat(makingTxt.getText().toString()),
-                    true);
+            if(validateData()) {
+                data.createJewel(
+                        Float.parseFloat(rateTxt.getText().toString()),
+                        Float.parseFloat(quantityTxt.getText().toString()),
+                        Float.parseFloat(wastageTxt.getText().toString()),
+                        Float.parseFloat(makingTxt.getText().toString()),
+                        true);
 
-            data.setGst(Float.parseFloat(gstTxt.getText().toString()));
+                data.setGst(Float.parseFloat(gstTxt.getText().toString()));
 
-            cost = rateCalculator.getTotalCost(data);
-            status = Double.isInfinite(cost);
+                cost = rateCalculator.getTotalCost(data);
+                status = !Double.isInfinite(cost);
+            }
+            else {
+                System.out.println("Invalid Inputs");
+                errMsg.setText("Invalid Inputs");
+            }
 
             System.out.println("Status: " + status);
 
@@ -84,5 +92,21 @@ public class ActivityButtonListener implements View.OnClickListener {
         makingTxt.setText("");
         gstTxt.setText("");
         total.setText("");
+    }
+
+    private boolean validateData() {
+
+        try {
+            Float.parseFloat(rateTxt.getText().toString());
+            Float.parseFloat(quantityTxt.getText().toString());
+            Float.parseFloat(wastageTxt.getText().toString());
+            Float.parseFloat(makingTxt.getText().toString());
+            Float.parseFloat(gstTxt.getText().toString());
+        }
+        catch (NumberFormatException | NullPointerException nfe) {
+            return false;
+        }
+
+        return true;
     }
 }
