@@ -1,4 +1,4 @@
-package com.aht.shopping.jewelmine.data.enums;
+package com.aht.shopping.jewelmine.app.data.enums;
 
 public enum JewelType {
     SILVER(0), GOLD(1), PLATINUM(2), DIAMOND(3);

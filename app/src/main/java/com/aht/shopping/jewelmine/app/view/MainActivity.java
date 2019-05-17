@@ -1,4 +1,4 @@
-package com.aht.shopping.jewelmine.view;
+package com.aht.shopping.jewelmine.app.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,9 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
-import com.aht.shopping.jewelmine.R;
-import com.aht.shopping.jewelmine.controller.ActivityButtonListener;
-import com.aht.shopping.jewelmine.controller.ActivityTextListener;
+import com.aht.shopping.jewelmine.app.R;
+import com.aht.shopping.jewelmine.app.controller.ActivityButtonListener;
+import com.aht.shopping.jewelmine.app.controller.ActivityTextListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

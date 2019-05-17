@@ -1,14 +1,13 @@
-package com.aht.shopping.jewelmine.controller;
+package com.aht.shopping.jewelmine.app.controller;
 
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.aht.shopping.jewelmine.R;
+import com.aht.shopping.jewelmine.app.R;
 
 public class ActivityTextListener implements View.OnTouchListener {
 
