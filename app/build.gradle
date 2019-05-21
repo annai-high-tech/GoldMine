@@ -2,22 +2,33 @@ apply plugin: 'com.android.application'
 
 android {
 
-    def appName = "JewelMine"
+    def appName = "Jewel Mine"
+    def appId = "com.aht.shopping.jewelmine"
+    def verCode = 2
+    def verName = "0.2"
+
+    def clean_appName = appName.replaceAll("\\s","")
 
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.aht.shopping.jewelmine"
+        applicationId appId
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode verCode
+        versionName verName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        setProperty("archivesBaseName", "$appName-$versionName")
+        setProperty("archivesBaseName", "${clean_appName}")
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "${appName}"
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix '-DEMO'
+            resValue "string", "app_name", "${appName} DEMO"
         }
     }
 }

@@ -17,12 +17,15 @@ import android.view.Menu;
 import com.aht.shopping.jewelmine.app.R;
 import com.aht.shopping.jewelmine.app.controller.ActivityButtonListener;
 import com.aht.shopping.jewelmine.app.controller.ActivityTextListener;
+import com.aht.shopping.jewelmine.app.controller.NavigationMenuListener;
+import com.aht.shopping.jewelmine.app.controller.ShareButtonListener;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private ActivityButtonListener buttonListener = null;
     private ActivityTextListener textListener = null;
+    private ShareButtonListener shareListener = null;
+    private NavigationMenuListener navListener = null;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity
 		
 		buttonListener = new ActivityButtonListener(this);
         textListener = new ActivityTextListener(this);
+        shareListener = new ShareButtonListener(this);
+        navListener = new NavigationMenuListener(this);
 
         findViewById(R.id.submit_button).setOnClickListener(buttonListener);
         findViewById(R.id.reset_button).setOnClickListener(buttonListener);
@@ -39,25 +44,19 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.wastage).setOnTouchListener(textListener);
         findViewById(R.id.making).setOnTouchListener(textListener);
         findViewById(R.id.gst).setOnTouchListener(textListener);
+        findViewById(R.id.share_app).setOnClickListener(shareListener);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-		
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(navListener);
     }
 
     @Override
@@ -92,28 +91,4 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }

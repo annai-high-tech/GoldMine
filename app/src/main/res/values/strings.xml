@@ -1,5 +1,22 @@
 <resources>
-    <string name="app_name">Jewel Mine</string>
+    <string name="app_link" translatable="false">
+        https://play.google.com/store/apps/details?id=%1$s
+    </string>
+
+    <string-array name="app_language" translatable="false">
+        <item>English</item> <!-- English -->
+        <item>தமிழ்</item> <!-- Tamil -->
+        <item>ಕನ್ನಡ</item> <!-- Kannada -->
+        <item>తెలుగు</item> <!-- Telugu -->
+        <item>हिंदी</item> <!-- Hindi -->
+    </string-array>
+
+    <string name="share_text">
+        \nI love this app (%1$s).
+        \nInstall and have fun.
+        \nLink: %2$s
+    </string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
