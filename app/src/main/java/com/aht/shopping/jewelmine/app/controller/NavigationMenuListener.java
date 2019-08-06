@@ -1,18 +1,20 @@
 package com.aht.shopping.jewelmine.app.controller;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.aht.shopping.jewelmine.app.BuildConfig;
 import com.aht.shopping.jewelmine.app.R;
 import com.aht.shopping.jewelmine.app.model.ShareApp;
+import com.google.android.material.navigation.NavigationView;
 
-public class NavigationMenuListener implements NavigationView.OnNavigationItemSelectedListener {
+public class NavigationMenuListener implements NavigationView
+        .OnNavigationItemSelectedListener {
 
     private AppCompatActivity activity;
     private ShareApp shareApp;
@@ -51,3 +53,5 @@ public class NavigationMenuListener implements NavigationView.OnNavigationItemSe
         return true;
     }
 }
+
+

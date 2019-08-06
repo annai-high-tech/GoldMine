@@ -1,24 +1,26 @@
 package com.aht.shopping.jewelmine.app.view;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.aht.shopping.jewelmine.app.R;
 import com.aht.shopping.jewelmine.app.controller.ActivityButtonListener;
 import com.aht.shopping.jewelmine.app.controller.ActivityTextListener;
 import com.aht.shopping.jewelmine.app.controller.NavigationMenuListener;
 import com.aht.shopping.jewelmine.app.controller.ShareButtonListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityTextListener textListener = null;
     private ShareButtonListener shareListener = null;
     private NavigationMenuListener navListener = null;
-	
+
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(navListener);
+
+        //Toast.makeText(MainActivity.this, "Initialisation started", Toast.LENGTH_LONG).show();
+        //MobileAds.initialize(this, new OnInitializationCompleteListener() {
+        //    @Override
+        //    public void onInitializationComplete(InitializationStatus initializationStatus) {
+        //    }
+        //});
+
+        mAdView = findViewById(R.id.adView);
+        mAdView.loadAd(new AdRequest.Builder().build());
     }
 
     @Override
@@ -92,3 +106,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+

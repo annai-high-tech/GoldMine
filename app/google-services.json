@@ -1,0 +1,78 @@
+{
+  "project_info": {
+    "project_number": "387680343603",
+    "firebase_url": "https://jewel-mine.firebaseio.com",
+    "project_id": "jewel-mine",
+    "storage_bucket": "jewel-mine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387680343603:android:d1007cba3bb1f24d",
+        "android_client_info": {
+          "package_name": "com.aht.shopping.jewelmine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387680343603-08q45ejohmaaha7acqt3j0mbrh51h2sh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4esdXVC8y_cPGff5GtzINowf-p53p7tY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387680343603-08q45ejohmaaha7acqt3j0mbrh51h2sh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-3254495262037809~1578025618"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387680343603:android:79c5a4b364a72ea6",
+        "android_client_info": {
+          "package_name": "com.aht.shopping.jewelmine.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387680343603-4hdrb00unlj2qr43nitfs2721su68824.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aht.shopping.jewelmine.debug",
+            "certificate_hash": "6cbaad7f914730f80933eb48eb7714d31db6658d"
+          }
+        },
+        {
+          "client_id": "387680343603-08q45ejohmaaha7acqt3j0mbrh51h2sh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4esdXVC8y_cPGff5GtzINowf-p53p7tY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387680343603-08q45ejohmaaha7acqt3j0mbrh51h2sh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
