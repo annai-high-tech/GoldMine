@@ -1,8 +1,12 @@
 package com.aht.shopping.jewelmine.app.view;
 
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import android.view.Menu;
 
@@ -71,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
         mAdView = findViewById(R.id.adView);
         mAdView.loadAd(new AdRequest.Builder().build());
+
+        Spanned text = Html.fromHtml("<a href='"
+                + getResources().getString(R.string.privacy_link)
+                + "'>"
+                + getResources().getString(R.string.privacy_title)
+                + "</a>");
+        ((TextView)findViewById(R.id.privacy_content)).setMovementMethod(LinkMovementMethod.getInstance());
+        ((TextView)findViewById(R.id.privacy_content)).setText(text);
     }
 
     @Override

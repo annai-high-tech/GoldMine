@@ -5,8 +5,8 @@ android {
 
     def appName = "Jewel Mine"
     def appId = "com.aht.shopping.jewelmine"
-    def verCode = 3
-    def verName = "1.0"
+    def verCode = 4
+    def verName = "1.1"
 
     def clean_appName = appName.replaceAll("\\s", "")
 

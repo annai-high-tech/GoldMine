@@ -2,6 +2,10 @@
     <string name="app_link" translatable="false">
         https://play.google.com/store/apps/details?id=%1$s
     </string>
+    <string name="privacy_link" translatable="false">
+        https://annaihightech.wixsite.com/site/privacy-policy
+    </string>
+    <string name="privacy_title" translatable="false">Privacy Policy</string>
 
     <string-array name="app_language" translatable="false">
         <item>English</item> <!-- English -->
